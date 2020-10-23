@@ -1,0 +1,24 @@
+PREFIX catprez: <https://w3id.org/profile/catprez/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+<http://pid.geoscience.gov.au/dataset/ga/21884>
+    a dcat:Dataset ;
+    dcterms:title "Australian Stratigraphic Units Database"@en ;
+    dcterms:description """The Australian Stratigraphic Units Database (ASUD) is the national authority on stratigraphic names in Australia. It originated as the National Register of Stratigraphic Names in 1949. The register was originally set up to help geoscientists adhere to the then newly created Australian Code of Stratigraphic Nomenclature (Lenz, et al, 1996). All information was held in a card file system until 1979 when the database was first developed electronically. The database now records information on all Australian stratigraphic units and their usage in published literature.
+
+The database contains about 17500 currently approved stratigraphic names and over 36000 variations, most of which are superseded, obsolete, or misspelt versions of the current names. This information is based on over 16000 published references.
+
+The database is maintained by Geoscience Australia on behalf of the Australian Stratigraphy Commission, a standing committee of the Geological Society of Australia."""@en ;
+    prov:wasDerivedFrom <http://pid.geoscience.gov.au/dataset/ga/116823> ;
+    dcterms:contributor <https://surroundaustralia.com> ;
+    dcterms:created "2020-10-16"^^xsd:date ;
+    dcterms:modified "2020-10-16"^^xsd:date ;
+    dcterms:issued "2020-10-16"^^xsd:date ;
+    dcterms:publisher <https://linked.data.gov.au/org/ga> ;
+    dcterms:creator <https://linked.data.gov.au/org/ga> ;
+    catprez:servedBy <http://example.com/service/auststrat-api> ;
+.

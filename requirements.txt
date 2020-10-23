@@ -1,0 +1,6 @@
+flask
+git+https://github.com/RDFLib/rdflib.git@master#egg=rdflib
+pyldapi
+markdown
+flask_restx
+requests

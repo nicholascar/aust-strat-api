@@ -1,0 +1,17 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX ogcapi: <https://data.surroundaustralia.com/def/ogcapi/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+<http://example.com/service/auststrat-api>
+    a ogcapi:OgcApi ;
+    dcterms:title "Aust Strat API"@en ;
+    dcterms:description "A LD API, in the style of an OGC LD API, for delivering the Australian Stratigraphic Units Database' Dataset"@en ;
+    dcat:servesDataset <http://pid.geoscience.gov.au/dataset/ga/21884> ;
+    dcterms:created "2020-10-23"^^xsd:date ;
+    dcterms:modified "2020-10-23"^^xsd:date ;
+    dcterms:issued "2020-10-23"^^xsd:date ;
+    dcterms:publisher <https://linked.data.gov.au/org/ga> ;
+    dcterms:creator <https://surroundaustralia.com> ;
+.

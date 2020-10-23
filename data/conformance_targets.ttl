@@ -1,0 +1,9 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX ogcapi: <https://data.surroundaustralia.com/def/ogcapi/>
+
+
+<http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/html>
+    a ogcapi:ConformanceTarget ;
+    dcterms:title "OGC API Conformance Class HTML";
+.
+
