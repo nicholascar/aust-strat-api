@@ -4,7 +4,7 @@ from api.model.profiles import *
 from api.config import *
 from api.model.link import *
 from api.model.collection import Collection
-from api.model.feature import Feature
+from api.model.feature import StratUnit
 import json
 from flask import Response, render_template
 from flask_paginate import Pagination
@@ -352,7 +352,9 @@ class FeaturesRenderer(ContainerRenderer):
         g = g + self.feature_list.collection.to_geosp_graph()
 
         for f in self.feature_list.features:
-            g = g + Feature(f[0]).to_geosp_graph()
+            g = g + StratUnit(f[0]).to_geosp_graph()
+
+
 
         # serialise in the appropriate RDF format
         if self.mediatype in ["application/rdf+json", "application/json"]:

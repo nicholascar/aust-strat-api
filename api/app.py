@@ -14,10 +14,37 @@ from pyldapi import Renderer
 from api.model import *
 from rdflib import Graph, Literal, URIRef
 from rdflib.namespace import DCAT, DCTERMS, RDF
+from pathlib import Path
 
-app = Flask(__name__, template_folder=TEMPLATES_DIR, static_folder=STATIC_DIR)
+
+app = Flask(__name__, template_folder=str(TEMPLATES_DIR), static_folder=str(STATIC_DIR))
 
 blueprint = Blueprint('api', __name__)
+
+
+@app.context_processor
+def context_processor():
+    """
+    A set of variables available globally for all Jinja templates.
+    :return: A dictionary of variables
+    :rtype: dict
+    """
+    MEDIATYPE_NAMES = {
+        "text/html": "HTML",
+        "application/json": "JSON",
+        "application/geo+json": "GeoJSON",
+        "text/turtle": "Turtle",
+        "application/rdf+xml": "RDX/XML",
+        "application/ld+json": "JSON-LD",
+        "text/n3": "Notation-3",
+        "application/n-triples": "N-Triples",
+    }
+
+    return dict(
+        LOCAL_URIS=LOCAL_URIS,
+        MEDIATYPE_NAMES=MEDIATYPE_NAMES,
+        API_TITLE=API_TITLE,
+    )
 
 
 @app.route("/")
@@ -27,8 +54,23 @@ def landing_page():
     except Exception as e:
         logging.debug(e)
         return Response(
-            "The API cannot connect to its data source",
+            "The API cannot load the Landing Page\n\nUnderlying message:\n{}".format(e),
             status=500,
+            mimetype="text/plain"
+        )
+
+
+@app.route("/cache-clear")
+def cache_clear():
+    if Path.is_file(CACHE_FILE):
+        Path.unlink(CACHE_FILE)
+        return Response(
+            "cache cleared",
+            mimetype="text/plain"
+        )
+    else:
+        return Response(
+            "no cache to clear",
             mimetype="text/plain"
         )
 
@@ -108,30 +150,7 @@ class FeaturesRoute(Resource):
 @api.param("item_id", "The ID of a Feature in this Collection's list of Items")
 class FeatureRoute(Resource):
     def get(self, collection_id, item_id):
-        g = get_graph()
-        # get the URI for the Collection using the ID
-        collection_uri = None
-        for s in g.subjects(predicate=DCTERMS.identifier, object=Literal(collection_id)):
-            collection_uri = s
-
-        if collection_uri is None:
-            return Response(
-                "You have entered an unknown Collection ID",
-                status=400,
-                mimetype="text/plain"
-            )
-
-        # get URIs for things with this ID  - IDs may not be unique across Collections
-        for s in g.subjects(predicate=DCTERMS.identifier, object=Literal(item_id)):
-            # if this Feature is in this Collection, return it
-            if (s, DCTERMS.isPartOf, collection_uri) in g:
-                return ProvincesRenderer(request, str(s)).render()
-
-        return Response(
-            "The Feature you have entered the ID for is not part of the Collection you entered the ID for",
-            status=400,
-            mimetype="text/plain"
-        )
+        return StratUnitRenderer(request, collection_id, item_id).render()
 
 
 @api.route("/object")
@@ -159,11 +178,18 @@ def render_api_error(title, status, message, mediatype="text/html"):
 
 
 if __name__ == "__main__":
-    logging.basicConfig(
-        filename=LOGFILE,
-        level=logging.DEBUG,
-        datefmt="%Y-%m-%d %H:%M:%S",
-        format="%(asctime)s %(levelname)s %(filename)s:%(lineno)s %(message)s",
-    )
+    if DEBUG:
+        logging.basicConfig(
+            level=logging.DEBUG,
+            datefmt="%Y-%m-%d %H:%M:%S",
+            format="%(asctime)s %(levelname)s %(filename)s:%(lineno)s %(message)s",
+        )
+    else:
+        logging.basicConfig(
+            filename=LOGFILE,
+            level=logging.DEBUG,
+            datefmt="%Y-%m-%d %H:%M:%S",
+            format="%(asctime)s %(levelname)s %(filename)s:%(lineno)s %(message)s",
+        )
 
     app.run(debug=DEBUG, threaded=True, port=PORT)

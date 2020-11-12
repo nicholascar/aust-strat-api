@@ -125,6 +125,6 @@ class CollectionsRenderer(ContainerRenderer):
         }
 
         return Response(
-            render_template("collections_oai.html", **_template_context),
+            render_template("collections.html", **_template_context),
             headers=self.headers,
         )

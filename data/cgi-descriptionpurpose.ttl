@@ -1,0 +1,14 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://resource.geosciml.org/classifierscheme/cgi/2016.01/descriptionpurpose> a skos:ConceptScheme ;
+    skos:definition "This scheme describes codes used to specify the intended scope of a description of a GeologicFeature, as defined by the IUGS Commission for Geoscience Information (CGI) Geoscience Terminology Working Group. By extension, it includes all concepts in this conceptScheme, as well as concepts in any previous versions of the scheme. Designed for us in the \"purpose\" property in GeoSciML GeologicFeature elements." ;
+    skos:inScheme <http://resource.geosciml.org/classifier/cgi/descriptionpurpose/defining_norm>,
+        <http://resource.geosciml.org/classifier/cgi/descriptionpurpose/instance>,
+        <http://resource.geosciml.org/classifier/cgi/descriptionpurpose/typical_norm> ;
+    skos:prefLabel "Description Purpose" .
+
+<http://resource.geosciml.org/classifier/cgi/descriptionpurpose/defining_norm> skos:prefLabel "defining norm" .
+
+<http://resource.geosciml.org/classifier/cgi/descriptionpurpose/instance> skos:prefLabel "instance" .
+
+<http://resource.geosciml.org/classifier/cgi/descriptionpurpose/typical_norm> skos:prefLabel "typicalNorm" .

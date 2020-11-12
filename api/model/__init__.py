@@ -4,4 +4,4 @@ from api.model.conformance import ConformanceRenderer
 from api.model.collections import CollectionsRenderer
 from api.model.collection import Collection, CollectionRenderer
 from api.model.features import FeaturesRenderer
-from api.model.feature import Feature, FeatureRenderer, ProvincesRenderer
+from api.model.feature import StratUnit, StratUnitRenderer

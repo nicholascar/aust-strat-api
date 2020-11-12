@@ -4,8 +4,6 @@ from api.config import *
 from api.model.link import *
 import json
 from flask import Response, render_template
-from api.model.spatial_object import SpatialExtent, TemporalExtent
-from api.model.feature import Feature
 import markdown
 from rdflib import URIRef, Literal
 from rdflib.namespace import DCTERMS

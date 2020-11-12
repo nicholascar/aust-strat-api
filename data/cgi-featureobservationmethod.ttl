@@ -1,0 +1,53 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://resource.geosciml.org/classifierscheme/cgi/2016.01/featureobservationmethod> a skos:ConceptScheme ;
+    skos:definition "This scheme contains concepts used to specify the approach to acquiring the collection of attributes to describe an individual feature instance, as defined by the IUGS Commission for Geoscience Information (CGI) Geoscience Terminology Working Group. Observation method is a convienence property that provides a quick approach to shortcut use of more comprehensive observation and measurement construct when data are reported using a feature view (as opposed to observation view). By extension, this vocabulary includes all concepts in this conceptScheme, as well as concepts in any previous versions of the scheme." ;
+    skos:inScheme <http://resource.geosciml.org/classifier/cgi/featureobservationmethod/borehole_cuttings_observation>,
+        <http://resource.geosciml.org/classifier/cgi/featureobservationmethod/borehole_geophysical_log_measurements>,
+        <http://resource.geosciml.org/classifier/cgi/featureobservationmethod/data_from_single_published_description>,
+        <http://resource.geosciml.org/classifier/cgi/featureobservationmethod/digital_conversion_from_published_source>,
+        <http://resource.geosciml.org/classifier/cgi/featureobservationmethod/direct_observation>,
+        <http://resource.geosciml.org/classifier/cgi/featureobservationmethod/drill_core_observation>,
+        <http://resource.geosciml.org/classifier/cgi/featureobservationmethod/drill_core_observation_estimated_values>,
+        <http://resource.geosciml.org/classifier/cgi/featureobservationmethod/drill_core_observation_measured_values>,
+        <http://resource.geosciml.org/classifier/cgi/featureobservationmethod/indirect_method>,
+        <http://resource.geosciml.org/classifier/cgi/featureobservationmethod/outcrop_observation>,
+        <http://resource.geosciml.org/classifier/cgi/featureobservationmethod/outcrop_observation_estimated_values>,
+        <http://resource.geosciml.org/classifier/cgi/featureobservationmethod/outcrop_observation_measured_values>,
+        <http://resource.geosciml.org/classifier/cgi/featureobservationmethod/remotely_sensed_data>,
+        <http://resource.geosciml.org/classifier/cgi/featureobservationmethod/synthesis_from_multiple_sources>,
+        <http://resource.geosciml.org/classifier/cgi/featureobservationmethod/synthesis_of_multiple_outcrop_observations>,
+        <http://resource.geosciml.org/classifier/cgi/featureobservationmethod/synthesis_of_multiple_published_descriptions> ;
+    skos:prefLabel "Observation Method (Geologic Feature)" .
+
+<http://resource.geosciml.org/classifier/cgi/featureobservationmethod/borehole_cuttings_observation> skos:prefLabel "borehole cuttings observation" .
+
+<http://resource.geosciml.org/classifier/cgi/featureobservationmethod/borehole_geophysical_log_measurements> skos:prefLabel "borehole geophysical log measurements" .
+
+<http://resource.geosciml.org/classifier/cgi/featureobservationmethod/data_from_single_published_description> skos:prefLabel "data from single published description" .
+
+<http://resource.geosciml.org/classifier/cgi/featureobservationmethod/digital_conversion_from_published_source> skos:prefLabel "digital conversion from published source" .
+
+<http://resource.geosciml.org/classifier/cgi/featureobservationmethod/direct_observation> skos:prefLabel "direct observation" .
+
+<http://resource.geosciml.org/classifier/cgi/featureobservationmethod/drill_core_observation> skos:prefLabel "drill core observation" .
+
+<http://resource.geosciml.org/classifier/cgi/featureobservationmethod/drill_core_observation_estimated_values> skos:prefLabel "drill core observation estimated values" .
+
+<http://resource.geosciml.org/classifier/cgi/featureobservationmethod/drill_core_observation_measured_values> skos:prefLabel "drill core observation measured values" .
+
+<http://resource.geosciml.org/classifier/cgi/featureobservationmethod/indirect_method> skos:prefLabel "indirect method" .
+
+<http://resource.geosciml.org/classifier/cgi/featureobservationmethod/outcrop_observation> skos:prefLabel "outcrop observation" .
+
+<http://resource.geosciml.org/classifier/cgi/featureobservationmethod/outcrop_observation_estimated_values> skos:prefLabel "outcrop observation estimated values" .
+
+<http://resource.geosciml.org/classifier/cgi/featureobservationmethod/outcrop_observation_measured_values> skos:prefLabel "outcrop observation measured values" .
+
+<http://resource.geosciml.org/classifier/cgi/featureobservationmethod/remotely_sensed_data> skos:prefLabel "remotely sensed data" .
+
+<http://resource.geosciml.org/classifier/cgi/featureobservationmethod/synthesis_from_multiple_sources> skos:prefLabel "synthesis from multiple sources" .
+
+<http://resource.geosciml.org/classifier/cgi/featureobservationmethod/synthesis_of_multiple_outcrop_observations> skos:prefLabel "synthesis of multiple outcrop observations" .
+
+<http://resource.geosciml.org/classifier/cgi/featureobservationmethod/synthesis_of_multiple_published_descriptions> skos:prefLabel "synthesis of multiple published descriptions" .

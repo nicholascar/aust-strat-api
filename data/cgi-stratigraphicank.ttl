@@ -1,0 +1,47 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://resource.geosciml.org/classifierscheme/cgi/2016.01/stratigraphicrank> a skos:ConceptScheme ;
+    skos:definition "This scheme specifies concepts used to categorize the stratigraphic rank of geologic units, as compiled by the IUGS Commission for Geoscience Information (CGI) Geoscience Terminology Working Group. By extension, it includes all concepts in this conceptScheme, as well as concepts in any previous versions of the scheme." ;
+    skos:inScheme <http://resource.geosciml.org/classifier/cgi/stratigraphicrank/bed>,
+        <http://resource.geosciml.org/classifier/cgi/stratigraphicrank/complex>,
+        <http://resource.geosciml.org/classifier/cgi/stratigraphicrank/formation>,
+        <http://resource.geosciml.org/classifier/cgi/stratigraphicrank/group>,
+        <http://resource.geosciml.org/classifier/cgi/stratigraphicrank/lithodeme>,
+        <http://resource.geosciml.org/classifier/cgi/stratigraphicrank/megasequence>,
+        <http://resource.geosciml.org/classifier/cgi/stratigraphicrank/member>,
+        <http://resource.geosciml.org/classifier/cgi/stratigraphicrank/rank_not_specified>,
+        <http://resource.geosciml.org/classifier/cgi/stratigraphicrank/sequence>,
+        <http://resource.geosciml.org/classifier/cgi/stratigraphicrank/subgroup>,
+        <http://resource.geosciml.org/classifier/cgi/stratigraphicrank/suite>,
+        <http://resource.geosciml.org/classifier/cgi/stratigraphicrank/supergroup>,
+        <http://resource.geosciml.org/classifier/cgi/stratigraphicrank/supersequence>,
+        <http://resource.geosciml.org/classifier/cgi/stratigraphicrank/supersuite> ;
+    skos:prefLabel "Stratigraphic Rank" .
+
+<http://resource.geosciml.org/classifier/cgi/stratigraphicrank/bed> skos:prefLabel "bed" .
+
+<http://resource.geosciml.org/classifier/cgi/stratigraphicrank/complex> skos:prefLabel "complex" .
+
+<http://resource.geosciml.org/classifier/cgi/stratigraphicrank/formation> skos:prefLabel "formation" .
+
+<http://resource.geosciml.org/classifier/cgi/stratigraphicrank/group> skos:prefLabel "group" .
+
+<http://resource.geosciml.org/classifier/cgi/stratigraphicrank/lithodeme> skos:prefLabel "lithodeme" .
+
+<http://resource.geosciml.org/classifier/cgi/stratigraphicrank/megasequence> skos:prefLabel "megasequence" .
+
+<http://resource.geosciml.org/classifier/cgi/stratigraphicrank/member> skos:prefLabel "member" .
+
+<http://resource.geosciml.org/classifier/cgi/stratigraphicrank/rank_not_specified> skos:prefLabel "not specified" .
+
+<http://resource.geosciml.org/classifier/cgi/stratigraphicrank/sequence> skos:prefLabel "sequence" .
+
+<http://resource.geosciml.org/classifier/cgi/stratigraphicrank/subgroup> skos:prefLabel "subgroup" .
+
+<http://resource.geosciml.org/classifier/cgi/stratigraphicrank/suite> skos:prefLabel "suite" .
+
+<http://resource.geosciml.org/classifier/cgi/stratigraphicrank/supergroup> skos:prefLabel "supergroup" .
+
+<http://resource.geosciml.org/classifier/cgi/stratigraphicrank/supersequence> skos:prefLabel "supersequence" .
+
+<http://resource.geosciml.org/classifier/cgi/stratigraphicrank/supersuite> skos:prefLabel "supersuite" .

@@ -1,0 +1,106 @@
+{% extends "page.html" %}
+{%
+  set extra_styling = '
+    table.lined {
+      border-collapse:collapse;
+      margin-bottom: 10px;
+    }
+    table.lined th,
+    table.lined td {
+      text-align: left;
+      padding: 5px;
+      vertical-align: top;
+    }
+    table.lined a {
+      text-decoration: none;
+    }
+    table.lined a:hover {
+      text-decoration: underline;
+    }
+'
+%}
+{% block content %}
+  <div>
+    <h1>{{ feature.title }}</h1>
+    <h4><code>{{ feature.uri }}</code></h4>
+  </div>
+  <div id="maincontent">
+    {% if feature.description is not none %}
+      <p>{{ feature.description|safe }}</p>
+    {% endif %}
+    <h4>Stratigraphic Properties</h4>
+    <table class="lined">
+      {% if feature.observationMethod is not none %}
+      <tr>
+        <th><a href="https://linked.data.gov.au/def/su/observationMethod">Observation Method</a></th>
+        <td><a href="{{ feature.observationMethod[0] }}">{{ feature.observationMethod[1] }}</a></td>
+      </tr>
+      {% endif %}
+      {% if feature.geologicUnitType is not none %}
+      <tr>
+        <th><a href="https://linked.data.gov.au/def/su/geologicUnitType">Geologic Unit Type</a></th>
+        <td><a href="{{ feature.geologicUnitType[0] }}">{{ feature.geologicUnitType[1] }}</a></td>
+      </tr>
+      {% endif %}
+      {% if feature.purpose is not none %}
+      <tr>
+        <th><a href="https://linked.data.gov.au/def/su/descriptionPurpose">Description Purpose</a></th>
+        <td><a href="{{ feature.descriptionPurpose[0] }}">{{ feature.descriptionPurpose[1] }}</a></td>
+      </tr>
+      {% endif %}
+      {% if feature.stratigraphicRank is not none %}
+      <tr>
+        <th><a href="https://linked.data.gov.au/def/su/stratigraphicRank">Stratigraphic Rank</a></th>
+        <td><a href="{{ feature.stratigraphicRank[0] }}">{{ feature.stratigraphicRank[1] }}</a></td>
+      </tr>
+      {% endif %}
+    </table>
+    {% if feature.eventProcess is not none or feature.youngerNamedAge is not none %}
+    <h4>Geological History</h4>
+    <table class="lined">
+      <tr>
+        <td>Geological Event {{ feature.uri.split("/")[-1] }}</td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% if feature.eventProcess is not none %}
+      <tr>
+        <td></td>
+        <th><a href="https://linked.data.gov.au/def/su/eventProcess">Event Process</a></th>
+        <td><a href="{{ feature.eventProcess[0] }}">{{ feature.eventProcess[1] }}</a></td>
+      </tr>
+      {% endif %}
+      {% if feature.youngerBound is not none %}
+      <tr>
+        <td></td>
+        <th><a href="https://linked.data.gov.au/def/su/youngerBound">Younger Bound</a></th>
+        <td>{{ feature.youngerBound[0] }} <a href="{{ feature.youngerBound[1] }}">{{ feature.youngerBound[2] }}</a></td>
+      </tr>
+      {% endif %}
+      {% if feature.olderBound is not none %}
+      <tr>
+        <td></td>
+        <th><a href="https://linked.data.gov.au/def/su/olderBound">Older Bound</a></th>
+        <td>{{ feature.olderBound[0] }} <a href="{{ feature.olderBound[1] }}">{{ feature.olderBound[2] }}</a></td>
+      </tr>
+      {% endif %}
+      {% if feature.youngerNamedAge is not none %}
+      <tr>
+        <td></td>
+        <th><a href="https://linked.data.gov.au/def/su/youngerNamedAge">Younger Named Age</a></th>
+        <td><a href="{{ feature.youngerNamedAge[0] }}">{{ feature.youngerNamedAge[1] }}</a></td>
+      </tr>
+      {% endif %}
+      {% if feature.olderNamedAge is not none %}
+      <tr>
+        <td></td>
+        <th><a href="https://linked.data.gov.au/def/su/olderNamedAge">Older Named Age</a></th>
+        <td><a href="{{ feature.olderNamedAge[0] }}">{{ feature.olderNamedAge[1] }}</a></td>
+      </tr>
+      {% endif %}
+    </table>
+    {% endif %}
+    <p>&nbsp;</p>
+  </div>
+  {% include 'page_altprofiles.html' %}
+{% endblock %}

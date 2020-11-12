@@ -1,0 +1,65 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://resource.geosciml.org/classifierscheme/cgi/2016.01/geologicunittype> a skos:ConceptScheme ;
+    skos:definition "This scheme specifies concepts used to categorize types of Geologic Unit, as defined by the IUGS Commission for Geoscience Information (CGI) Geoscience Terminology Working Group. By extension, it includes all concepts in this conceptScheme, as well as concepts in any previous versions of the scheme. Unit types are differentiated based on their defining lithological, stratigraphic, or other physical properties." ;
+    skos:inScheme <http://resource.geosciml.org/classifier/cgi/geologicunittype/allostratigraphic_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/alteration_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/artificial_ground>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/biostratigraphic_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/chronostratigraphic_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/deformation_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/excavation_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/geologic_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/geomorphologic_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/geophysical_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/lithodemic_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/lithogenetic_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/lithologic_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/lithotectonic_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/magnetostratigraphic_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/mass_movement_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/pedoderm>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/pedostratigraphic_unit>,
+        <http://resource.geosciml.org/classifier/cgi/geologicunittype/polarity_chronostratigraphic_unit> ;
+    skos:prefLabel "Geologic Unit Type" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/allostratigraphic_unit> skos:prefLabel "allostratigraphic unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/alteration_unit> skos:prefLabel "alteration unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/artificial_ground> skos:prefLabel "artificial ground" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/biostratigraphic_unit> skos:prefLabel "biostratigraphic unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/chronostratigraphic_unit> skos:prefLabel "chronostratigraphic unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/deformation_unit> skos:prefLabel "deformation unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/excavation_unit> skos:prefLabel "excavation unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/geologic_unit> skos:prefLabel "geologic unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/geomorphologic_unit> skos:prefLabel "geomorphologic unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/geophysical_unit> skos:prefLabel "geophysical unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/lithodemic_unit> skos:prefLabel "lithodemic unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/lithogenetic_unit> skos:prefLabel "lithogenetic unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/lithologic_unit> skos:prefLabel "lithologic unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/lithostratigraphic_unit> skos:prefLabel "lithostratigraphic unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/lithotectonic_unit> skos:prefLabel "lithotectonic unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/magnetostratigraphic_unit> skos:prefLabel "magnetostratigraphic unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/mass_movement_unit> skos:prefLabel "mass movement unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/pedoderm> skos:prefLabel "pedoderm" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/pedostratigraphic_unit> skos:prefLabel "pedostratigraphic unit" .
+
+<http://resource.geosciml.org/classifier/cgi/geologicunittype/polarity_chronostratigraphic_unit> skos:prefLabel "polarity chronostratigraphic unit" .

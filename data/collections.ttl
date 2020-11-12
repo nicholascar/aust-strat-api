@@ -7,5 +7,5 @@ PREFIX ogcapi: <https://data.surroundaustralia.com/def/ogcapi/>
     dcterms:title "Australian Stratigraphic Units"@en ;
     dcterms:description "The Features in this Collection are Stratigraphic Units, drawn from the Australian Stratigraphic Units Database which contains descriptions of their geologicla properties and relates them to their parent geological provinces from the Australian Gological Provinces Database."@en ;
     dcterms:identifier "sus" ;
-    dcterms:isPartOf <http://example.com/dataset/auststrat> ;
+    dcterms:isPartOf <http://pid.geoscience.gov.au/dataset/ga/21884> ;
 .

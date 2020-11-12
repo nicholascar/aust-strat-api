@@ -65,3 +65,15 @@ profile_loop3d = Profile(
     languages=["en"],  # default 'en' only for now
     default_language="en",
 )
+
+profile_gsmlb = Profile(
+    "http://www.opengis.net/gsml/4.1/GeoSciML-Basic",
+    label="GeoSciML Basic",
+    comment="GeoSciML describes geological features from the mapping perspective, articulated around the concept of "
+            "a MappedFeature – the cartographic element shown on a map, and the GeologicFeature it represents. All "
+            "geologic concepts that can be represented on a map are subtypes of GeologicFeature.",
+    mediatypes=["application/xml"],
+    default_mediatype="application/xml",
+    languages=["en"],  # default 'en' only for now
+    default_language="en",
+)
