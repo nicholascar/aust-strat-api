@@ -4,3 +4,4 @@ pyldapi
 markdown
 flask_restx
 requests
+lxml
