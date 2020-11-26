@@ -207,7 +207,7 @@ class StratUnit:
         g.add((
             f,
             RDF.type,
-            GSOC.Geologic_Structure
+            GSOG.Group
         ))
         # event stuff
         if self.eventProcess is not None or self.youngerBound is not None or self.youngerNamedAge is not None:
@@ -335,87 +335,119 @@ class StratUnit:
                         gp_subtype
                     ))
 
-            if self.youngerBound is not None:
-                yb = BNode()
-                g.add((
-                    yb,
-                    RDF.type,
-                    GSOC.Geologic_Time_Date
-                ))
-                g.add((
-                    yb,
-                    QUDT.value,
-                    Literal(
-                        float(self.youngerBound[0]) * 1000000
-                        if self.youngerBound[1] == "http://pid.geoscience.gov.au/def/voc/ga/uom/Ma"
-                        else self.youngerBound[0]
-                        , datatype=XSD.float
-                    )
-                ))
-                g.add((
-                    yb,
-                    QUDT.units,
-                    URIRef(
-                        LUNIT.ma
-                        if self.youngerBound[1] == "http://pid.geoscience.gov.au/def/voc/ga/uom/Ma"
-                        else self.youngerBound[1]
-                    )
-                ))
-                g.add((
-                    ge,
-                    GSOC.hasEndValue,
-                    yb
-                ))
-
-            if self.olderBound is not None:
-                ob = BNode()
-                g.add((
-                    ob,
-                    RDF.type,
-                    GSOC.Geologic_Time_Date
-                ))
-                g.add((
-                    ob,
-                    QUDT.value,
-                    Literal(
-                        float(self.olderBound[0]) * 1000000
-                        if self.olderBound[1] == "http://pid.geoscience.gov.au/def/voc/ga/uom/Ma"
-                        else self.olderBound[0]
-                        , datatype=XSD.float
-                    )
-                ))
-                g.add((
-                    ob,
-                    QUDT.units,
-                    URIRef(
-                        LUNIT.ma
-                        if self.olderBound[1] == "http://pid.geoscience.gov.au/def/voc/ga/uom/Ma"
-                        else self.olderBound[1]
-                    )
-                ))
-                g.add((
-                    ge,
-                    GSOC.hasStartValue,
-                    ob
-                ))
-
             GSGF = Namespace("http://loop3d.org/GSO/ontology/2020/1/geologicfeature/")
             g.bind("gsgf", GSGF)
 
-            if self.youngerNamedAge is not None:
+            if self.youngerNamedAge is not None \
+                    or self.olderNamedAge is not None \
+                    or self.youngerBound is not None \
+                    or self.olderBound is not None:
+
+                ti = BNode()
                 g.add((
                     ge,
-                    GSGF.time_interval_finishes,
-                    URIRef(self.youngerNamedAge[0])
+                    GSOC.directTemporalOccupies,
+                    ti
                 ))
 
-            if self.olderNamedAge is not None:
-                g.add((
-                    ge,
-                    GSGF.time_interval_starts,
-                    URIRef(self.olderNamedAge[0])
-                ))
+                if self.youngerNamedAge is not None:
+                    g.add((
+                        ti,
+                        GSOC.timeFinishedBy,
+                        URIRef(self.youngerNamedAge[0])
+                    ))
 
+                if self.olderNamedAge is not None:
+                    g.add((
+                        ti,
+                        GSOC.timeStartedBy,
+                        URIRef(self.olderNamedAge[0])
+                    ))
+
+                if self.youngerBound is not None or self.olderBound is not None:
+
+                    tr = BNode()
+                    g.add((
+                        ti,
+                        GSOC.hasValue,
+                        tr
+                    ))
+
+                    if self.youngerBound is not None:
+                        yb = BNode()
+                        g.add((
+                            tr,
+                            GSOC.hasEndValue,
+                            yb
+                        ))
+                        g.add((
+                            yb,
+                            RDF.type,
+                            GSOC.Time_Numeric_Value
+                        ))
+                        g.add((
+                            yb,
+                            RDF.type,
+                            GSOC.Geologic_Time_Date
+                        ))
+                        g.add((
+                            yb,
+                            GSOG.hasDataValue,
+                            Literal(self.youngerBound[0], datatype=XSD.float)
+                        ))
+                        uom = BNode()
+                        g.add((
+                            yb,
+                            GSOC.hasUOM,
+                            uom
+                        ))
+                        g.add((
+                            uom,
+                            RDF.type,
+                            URIRef(
+                                LUNIT.ma
+                                if self.youngerBound[1] == "http://pid.geoscience.gov.au/def/voc/ga/uom/Ma"
+                                else self.youngerBound[1]
+                            )
+                        ))
+
+                    if self.olderBound is not None:
+                        ob = BNode()
+                        g.add((
+                            tr,
+                            GSOC.hasStartValue,
+                            ob
+                        ))
+                        g.add((
+                            ob,
+                            RDF.type,
+                            GSOC.Time_Numeric_Value
+                        ))
+                        g.add((
+                            ob,
+                            RDF.type,
+                            GSOC.Geologic_Time_Date
+                        ))
+                        g.add((
+                            ob,
+                            GSOG.hasDataValue,
+                            Literal(self.youngerBound[0], datatype=XSD.float)
+                        ))
+                        uom = BNode()
+                        g.add((
+                            ob,
+                            GSOC.hasUOM,
+                            uom
+                        ))
+                        g.add((
+                            uom,
+                            RDF.type,
+                            URIRef(
+                                LUNIT.ma
+                                if self.youngerBound[1] == "http://pid.geoscience.gov.au/def/voc/ga/uom/Ma"
+                                else self.youngerBound[1]
+                            )
+                        ))
         return g
 
 
