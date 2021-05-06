@@ -1,0 +1,1 @@
+docker build -t stratunits-api -f Dockerfile .

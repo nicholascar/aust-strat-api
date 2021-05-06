@@ -76,6 +76,8 @@ def safe_list_get(ls, idx, default):
 
 
 def get_strat_unit(strat_unit_id, return_original_xml=False):
+    # with open("10003.xml", "rb") as f:
+    #     tree = etree.fromstring(f.read())
     # ?service=WFS&version=2.0.0&request=GetFeature&typeName=gsmlb%3AGeologicUnit&featureid=asud.gsml.geologicunit.332
     params = {
         "service": "WFS",
@@ -150,6 +152,25 @@ def get_strat_unit(strat_unit_id, return_original_xml=False):
                 safe_list_get(geologicHistory.xpath("//gsmlb:olderNamedAge/@xlink:title", namespaces=namespaces), 0, None),
             )
 
+    hierarchyLinks = tree.xpath('//gsmlb:hierarchyLink/gsmlb:GeologicUnitHierarchy', namespaces=namespaces)
+    if len(hierarchyLinks) > 0:
+        hierarchy_links = []
+        for hl in hierarchyLinks:
+            role = (
+                safe_list_get(hl.xpath("//gsmlb:role/@xlink:href", namespaces=namespaces), 0, None),
+                safe_list_get(hl.xpath("//gsmlb:role/@xlink:title", namespaces=namespaces), 0, None),
+            )
+            target_unit = (
+                safe_list_get(hl.xpath("//gsmlb:targetUnit/@xlink:href", namespaces=namespaces), 0, None),
+                safe_list_get(hl.xpath("//gsmlb:targetUnit/@xlink:title", namespaces=namespaces), 0, None),
+            )
+            hierarchy_links.append({
+                "role": role,
+                "targetUnit": target_unit
+            })
+    else:
+        hierarchy_links = None
+
     return {
         "uri": tree.xpath('//gml:identifier/text()', namespaces=namespaces)[0],
         "title": tree.xpath('//gml:name/text()', namespaces=namespaces)[0],
@@ -172,6 +193,7 @@ def get_strat_unit(strat_unit_id, return_original_xml=False):
         "olderBound": olderBound,
         "youngerNamedAge": youngerNamedAge,
         "olderNamedAge": olderNamedAge,
+        "hierarchyLinks": hierarchy_links
     }
 
 

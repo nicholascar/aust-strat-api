@@ -1,3 +1,4 @@
+import sys
 import logging
 from flask import (
     Flask,
@@ -9,6 +10,8 @@ from flask import (
     Response
 )
 from flask_restx import Namespace, reqparse, Api, Resource
+import os.path
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 from api.config import *
 from pyldapi import Renderer
 from api.model import *

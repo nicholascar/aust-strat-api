@@ -68,6 +68,8 @@ class StratUnit:
         g.bind("isc", ISC)
         QUDT = Namespace("http://qudt.org/schema/qudt/")
         g.bind("qudt", QUDT)
+        SUH = Namespace("http://pid.geoscience.gov.au/def/voc/stratigraphichierarchy/")
+        g.bind("suh", SUH)
 
         f = URIRef(self.uri)
 
@@ -191,6 +193,13 @@ class StratUnit:
                 ge,
                 SU.olderNamedAge,
                 URIRef(self.olderNamedAge[0])
+            ))
+
+        for hl in self.hierarchyLinks:
+            g.add((
+                f,
+                URIRef(hl["role"][0]),
+                URIRef(hl["targetUnit"][0])
             ))
 
         return g
@@ -501,9 +510,9 @@ class StratUnitRenderer(Renderer):
             if self.mediatype == "text/html":
                 return self._render_su_html()
             else:
-                return self._render_su_rdf()
+                return self._render_rdf(self.feature.to_su_graph())
         elif self.profile == "loop3d":
-            return self._render_loop3d_rdf()
+            return self._render_rdf(self.feature.to_loop3d_graph())
 
     def _render_su_html(self):
         _template_context = {
@@ -516,29 +525,12 @@ class StratUnitRenderer(Renderer):
             headers=self.headers,
         )
 
-    def _render_su_rdf(self):
-        g = self.feature.to_su_graph()
-
+    def _render_rdf(self, g):
         # serialise in the appropriate RDF format
         if self.mediatype in ["application/rdf+json", "application/json"]:
-            return Response(g.serialize(format="json-ld"), mimetype=self.mediatype)
+            return Response(g.serialize(format="json-ld"), mimetype=self.mediatype, headers=self.headers)
         elif self.mediatype in Renderer.RDF_MEDIA_TYPES:
-            return Response(g.serialize(format=self.mediatype), mimetype=self.mediatype)
-        else:
-            return Response(
-                "The Media Type you requested, '{}', cannot be serialized to".format(self.mediatype),
-                status=400,
-                mimetype="text/plain"
-            )
-
-    def _render_loop3d_rdf(self):
-        g = self.feature.to_loop3d_graph()
-
-        # serialise in the appropriate RDF format
-        if self.mediatype in ["application/rdf+json", "application/json"]:
-            return Response(g.serialize(format="json-ld"), mimetype=self.mediatype)
-        elif self.mediatype in Renderer.RDF_MEDIA_TYPES:
-            return Response(g.serialize(format=self.mediatype), mimetype=self.mediatype)
+            return Response(g.serialize(format=self.mediatype), mimetype=self.mediatype, headers=self.headers)
         else:
             return Response(
                 "The Media Type you requested, '{}', cannot be serialized to".format(self.mediatype),
